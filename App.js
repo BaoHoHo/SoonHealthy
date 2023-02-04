@@ -1,15 +1,31 @@
-import { View, Text } from "react-native";
+import React from 'react';
+import { StyleSheet, Text, View ,Button} from 'react-native';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator} from '@react-navigation/stack';
+
+class HomeScreen extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={}
+  }
+  render(){
+    return(
+      <View>
+      <View style={{margin:50}}>
+        <Button title="New Task"></Button>
+      </View>
+    </View>
+    )
+  }
+}
 
 export default function App() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Universal React with Expo</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
