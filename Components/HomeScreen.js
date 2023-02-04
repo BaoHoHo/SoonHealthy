@@ -13,6 +13,10 @@ export default function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate("OptionFemale")}
       />
       <Button
+        title="Go to Option Male"
+        onPress={() => navigation.navigate("OptionMale")}
+      />
+      <Button
         title="Go to Calendar"
         onPress={() => navigation.navigate("Calendar")}
       />
