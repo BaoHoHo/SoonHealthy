@@ -8,7 +8,7 @@ export default function HomeScreen({ navigation }) {
   const image2 =require('../assets/img/wallpaper.jpg');
   return (
       <View style = {StyleSheet.container}>
-      <ImageBackground source={image2} resizeMode="cover" style={style.image}>
+      <ImageBackground source={image2} style={style.image}>
         <View style={{alignItems: "center"}}>
         <Text style={style.text}>Welcome to SoonHealthy</Text>
         
@@ -53,7 +53,9 @@ const style = StyleSheet.create({
   },
   image: {
     alignItem: "center",
-    height: 900,
+    height: '100%',
+    width: '100%',
+    resizeMode: "cover" ,
   },
   text: {
     color: '#6D9197',
