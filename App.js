@@ -8,6 +8,8 @@ import OptionFemaleScreen from "./Components/OptionFemaleScreen";
 import OptionMaleScreen from "./Components/OptionMaleScreen";
 import CalendarScreen from "./Components/CalendarScreen";
 
+import { Calendar } from "react-native-calendars";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
