@@ -5,11 +5,10 @@ import DefaultImage from '../assets/img/wallpaper.jpg';
 
 
 export default function HomeScreen({ navigation }) {
-  const image =require('../assets/img/header3.jpg');
-  const image2 =require('../assets/img/wallpaperPink.jpg');
+  const image2 =require('../assets/img/wallpaper.jpg');
   return (
       <View style = {StyleSheet.container}>
-      <ImageBackground source={image} resizeMode="cover" style={style.image}>
+      <ImageBackground source={image2} resizeMode="cover" style={style.image}>
         <View style={{alignItems: "center"}}>
         <Text style={style.text}>Welcome to SoonHealthy</Text>
         
@@ -20,15 +19,16 @@ export default function HomeScreen({ navigation }) {
   
         <View style={style.buttonFemale}>
         <TouchableOpacity 
-        onPress={() => navigation.navigate("FemaleOption")}
+        onPress={() => navigation.navigate("OptionFemale")}
         >
-            <Text style={style.buttonTextFemale}>Female</Text>
+
+          <Text style={style.buttonTextFemale}>Female</Text>
         </TouchableOpacity>
         </View>
   
         <View style={style.buttonMale}>
         <TouchableOpacity 
-        onPress={() => navigation.navigate("MaleOption")}
+        onPress={() => navigation.navigate("OptionMale")}
         >
             <Text style={style.buttonTextMale}>Male</Text>
         </TouchableOpacity>
@@ -53,7 +53,7 @@ const style = StyleSheet.create({
   },
   image: {
     alignItem: "center",
-    width: 400, height: 800,
+    height: 900,
   },
   text: {
     color: '#6D9197',
