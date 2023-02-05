@@ -16,8 +16,6 @@ export default function CalendarScreen() {
     const onChangeStart = (event, selectedDate) => {
         const currentStartDate = selectedDate || startDate;
         setStartDate(currentStartDate);
-
-
         let tempDate = new Date(currentStartDate);
         let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
         console.log(fDate);
@@ -36,23 +34,25 @@ export default function CalendarScreen() {
 
     const getMarked = () => {
         let marked = {};
-        // for(let i = 1; i <= 10; i++) {
-        // for (let year = startDate.getFullYear())
-        for(let i = startDate.getDate(); i <= startDate.getDate() + 4; i++) {
-            let day = i.toString().padStart(2, '0');
-            let periods = [
-                {
-                startingDay: i == startDate.getDate(),
-                endingDay: i  == startDate.getDate() + 4,
-                color: 'teal',
+        for(let yy = startDate.getFullYear(); yy <= startDate.getFullYear(); yy++) {
+            let year = yy.toString().padStart(2, '0');
+            for(let mm = startDate.getMonth() + 1; mm <= startDate.getMonth() + 1; mm++) {
+                let month = mm.toString().padStart(2, '0');
+                for(let dd = startDate.getDate(); dd <= startDate.getDate() + 4; dd++) {
+                    let day = dd.toString().padStart(2, '0');
+                    let periods = [
+                        {
+                        startingDay: dd == startDate.getDate(), 
+                        endingDay: dd  == startDate.getDate() + 4,
+                        color: '#ffd1dc',
+                        }
+                    ];
+                    marked[`${year}-${month}-${day}`] = {
+                        periods
+                    };
+                    console.log(`${year}-${month}-${day}`);
                 }
-            ];
-            // marked[`2022-${(startDate.getMonth + 1).toString().padStart(2, '0')}-${day}`] = {
-            marked[`2022-12-${day}`] = {
-                periods
-            };
-            // console.log(`Mark: ${(startDate.getMonth + 1)}`);
-            console.log(`${startDate.getDate()}`);
+            }
         }
         return marked;
     };
@@ -60,46 +60,17 @@ export default function CalendarScreen() {
     return (
         <View style={{marginTop: 50}}>
             <View style={styles.grid}>
-                <Text>Start day: </Text>
+                <Text style={{fontSize:20}}>Start day: </Text>
                 <RNDateTimePicker 
-                    value={startDate}
-                    // mode={mode}  
+                    value={startDate} 
                     onChange={onChangeStart}
                     display="calendar" 
                     textColor="black"
                 />
-            </View>
-            {/* <View style={styles.grid}>
-                <Text>End day: </Text>
-                <RNDateTimePicker 
-                    value={endDate}
-                    // mode={mode}
-                    onChange={onChangeEnd}
-                    display="calendar" 
-                    textColor="black"
-                />
-            </View> */}
-            <View>
                 <Button title="Set"/>
             </View>
-            
-            {/* <Calendar
-                markingType="multi-period"
-                markedDates={{
-                    '2023-02-22': {
-                        periods: [
-                            {startingDay: true, endingDay: false, color: '#ffd1dc'},
-                        ]
-                    },
-                    '2023-02-25': {
-                        periods: [
-                            {startingDay: false, endingDay: true, color: '#ffd1dc'}
-                        ]
-                    }
-                }}
-            /> */}
             <Calendar
-                initialDate="2022-12-01"
+                initialDate={startDate}  
                 markingType="multi-period"
                 markedDates={getMarked()}
             />
