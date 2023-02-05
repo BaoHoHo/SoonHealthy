@@ -14,14 +14,39 @@ export default function CalendarScreen() {
         setStartDate(currentStartDate);
     }
 
+    const month30 = [2,4,6,9,11]
+    const month31 = [1,3,5,7.8,10,12]
+
     const getMarked = () => {
         let marked = {};
+        let countDay = 0;
+        let dayCondition = startDate.getDate() + 4;
         for(let yy = startDate.getFullYear(); yy <= startDate.getFullYear(); yy++) {
             let year = yy.toString().padStart(2, '0');
             for(let mm = startDate.getMonth() + 1; mm <= startDate.getMonth() + 1; mm++) {
                 let month = mm.toString().padStart(2, '0');
-                for(let dd = startDate.getDate(); dd <= startDate.getDate() + 4; dd++) {
+                for(let dd = startDate.getDate(); dd <= dayCondition; dd++) {
                     let day = dd.toString().padStart(2, '0');
+
+                    if (dd == 31)
+                    {
+                        if (month30.includes(mm))
+                        {
+                            dd = 1;
+                            mm++;
+                            dayCondition = 5 - countDay;
+                        }
+                    }
+                    if (dd == 32)
+                    {
+                        if (month31.includes(mm))
+                        {
+                            dd = 1;
+                            mm++;
+                            dayCondition = 5 - countDay;
+                        }
+                    }
+
                     let periods = [
                         {
                         startingDay: dd == startDate.getDate(), 
@@ -29,10 +54,16 @@ export default function CalendarScreen() {
                         color: '#ffd1dc',
                         }
                     ];
+
+                    year = yy.toString().padStart(2, '0');
+                    month = mm.toString().padStart(2, '0');
+                    day = dd.toString().padStart(2, '0');
+
                     marked[`${year}-${month}-${day}`] = {
                         periods
                     };
-                    // console.log(`${year}-${month}-${day}`);
+                    console.log(`${year}-${month}-${day}`);
+                    countDay++;
                 }
             }
         }
@@ -55,25 +86,24 @@ export default function CalendarScreen() {
                             />
                         </View>
                         <View style={{marginVertical: 60}}>
-                        <Calendar
-                            initialDate={startDate.toString()}  
-                            markingType="multi-period"
-                            markedDates={getMarked()}
-                        />
+                            <Calendar
+                                initialDate={startDate.toString()}  
+                                markingType="multi-period"
+                                markedDates={getMarked()}
+                            />
+                        </View>
                     </View>
-                    </View>
-
                     <View style={styles.screen}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Calendar")}
-              style={styles.roundButton}>
-              <Text style={styles.text}>Confirm</Text>
-            </TouchableOpacity>
-      </View>
-
-        </View>
-    </View>
-    </ImageBackground>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate("Calendar")}
+                            style={styles.roundButton}
+                        >
+                            <Text style={styles.text}>Confirm</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+        </ImageBackground>
     </View>
     );
 }
