@@ -3,9 +3,9 @@ import { View, Text, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./Components/HomeScreen";
-import AboutScreen from "./Components/AboutScreen";
+import FemaleOption from "./Components/FemaleOption";
 
-import OptionFemaleScreen from "./Components/OptionFemaleScreen";
+import MaleOption from "./Components/MaleOption";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,8 +14,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="About" component={AboutScreen} />
-        <Stack.Screen name="OptionFemale" component={OptionFemaleScreen} />
+        <Stack.Screen name="FemaleOption" component={FemaleOption} />
+        <Stack.Screen name="MaleOption" component={MaleOption} />
       </Stack.Navigator>
     </NavigationContainer>
     
