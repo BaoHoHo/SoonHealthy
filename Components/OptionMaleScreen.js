@@ -1,52 +1,54 @@
 import React, { Component } from "react";
-import { StyleSheet, Button, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Button, View, Text, TouchableOpacity, ImageBackground } from "react-native";
+
 
 export default function OptionMaleScreen({navigation}) {
+    const image = require( '../background_image/dot.png');
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      
-      <View style={{marginVertical: 20}}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Calendar")}
-          style={styles.roundSquare1}>
-          <Text style={styles.textContact}>  Choose contact start date</Text>
-        </TouchableOpacity>
+    <View style={styles.container}>
+    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+            <View style={{marginVertical: 20}}>
+                <TouchableOpacity
+                onPress={() => navigation.navigate("Calendar")}
+                style={styles.roundSquare1}>
+                <Text style={styles.textContact}>Choose contact start date</Text>
+                </TouchableOpacity>
 
       </View>
-    </View>
+      </View>
+    </ImageBackground>
     
+    
+  </View>
     
   );
 }
 
 // Styles
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'right',
-    alignItems: 'right',
-  },
-  roundButton1: {
-    width: 100,
-    height: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-    borderRadius: 100,
-    backgroundColor: '#ffd1dc',
-  },
+    container: {
+        flex: 1,
+    },
+    image: {
+        flex: 1,
+        justifyContent: 'center',
+    },
   roundSquare1: {
-    width: 500,
+    width: 400,
     height: 70,
     backgroundColor: "#cadeed",
     justifyContent: 'center',
+
     borderRadius: 20,
   },
 
   textContact: {
-    fontSize: 24,
+
+    fontSize: 20,
     fontWeight: '400',
     color: "#194569",
     fontFamily: 'Chalkduster',
+    textAlign: "center"
   },
 });
