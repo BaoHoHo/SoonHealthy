@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import {Button, ImageBackground, View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import { Calendar } from "react-native-calendars";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
-
-
+import isLeapYear from 'leap-year';
 
 export default function CalendarScreen() {
     const image = require( '../background_image/dot.png');
@@ -16,12 +15,62 @@ export default function CalendarScreen() {
 
     const getMarked = () => {
         let marked = {};
+        let countDay = 0;
+        let monthCondition = startDate.getMonth() + 1;
+        let dayCondition = startDate.getDate() + 29;
         for(let yy = startDate.getFullYear(); yy <= startDate.getFullYear(); yy++) {
             let year = yy.toString().padStart(2, '0');
-            for(let mm = startDate.getMonth() + 1; mm <= startDate.getMonth() + 1; mm++) {
+            for(let mm = startDate.getMonth() + 1; mm <= monthCondition; mm++) {
                 let month = mm.toString().padStart(2, '0');
-                for(let dd = startDate.getDate(); dd <= startDate.getDate() + 29; dd++) {
+                for(let dd = startDate.getDate(); dd <= dayCondition; dd++) {
                     let day = dd.toString().padStart(2, '0');
+
+                    if (dd == 31)
+                    {
+                        if (month30.includes(mm))
+                        {
+                            if (mm == 12){
+                                mm = 1;
+                                yy++;
+                            }
+                            else {
+                                mm++;
+                            }
+                            dd = 1;
+
+                            dayCondition = 30 - countDay;
+                            monthCondition = 1;
+                        }
+                    }
+                    if (dd == 32)
+                    {
+                        if (month31.includes(mm))
+                        {
+                            if (mm == 12){
+                                mm = 1;
+                                yy++;
+                            }
+                            else {
+                                mm++;
+                            }
+                            dd = 1;
+                           
+                            dayCondition = 30 - countDay;
+                            monthCondition = 1;
+                        }
+                    }
+                    if (mm == 2)
+                    {
+                        if ((isLeapYear(yy + 2000) && dd == 30) || (!isLeapYear(yy + 2000) && dd == 29))
+                        {
+                            mm++;
+                            dd = 1;
+                           
+                            dayCondition = 30 - countDay;
+                            monthCondition = 1;
+                        }
+                    }
+
                     let periods = [
                         {
                         startingDay: dd == startDate.getDate(), 
@@ -29,10 +78,15 @@ export default function CalendarScreen() {
                         color: '#ffd1dc',
                         }
                     ];
+
+                    year = yy.toString().padStart(2, '0');
+                    month = mm.toString().padStart(2, '0');
+                    day = dd.toString().padStart(2, '0');
+
                     marked[`${year}-${month}-${day}`] = {
                         periods
                     };
-                    // console.log(`${year}-${month}-${day}`);
+                    countDay++;
                 }
             }
         }
@@ -60,19 +114,17 @@ export default function CalendarScreen() {
                             markingType="multi-period"
                             markedDates={getMarked()}
                         />
+                        </View>
                     </View>
-                    </View>
-
                     <View style={styles.screen}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Calendar")}
-              style={styles.roundButton}>
-              <Text style={styles.text}>Confirm</Text>
-            </TouchableOpacity>
-      </View>
-
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("Calendar")}
+                        style={styles.roundButton}>
+                        <Text style={styles.text}>Confirm</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
         </View>
-    </View>
     </ImageBackground>
     </View>
     );

@@ -4380,6 +4380,11 @@
   "resolved" "https://registry.npmjs.org/kleur/-/kleur-3.0.3.tgz"
   "version" "3.0.3"
 
+"leap-year@^4.0.0":
+  "integrity" "sha512-+GveCBnhFmRjFf04Nj/2Z/w5lNC4bRXpecIRz5QkK+LnWBwuf9jAaNEfbybrU+e2ls8J6p+FZMjiq1aEh+gPAw=="
+  "resolved" "https://registry.npmjs.org/leap-year/-/leap-year-4.0.0.tgz"
+  "version" "4.0.0"
+
 "leven@^3.1.0":
   "integrity" "sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A=="
   "resolved" "https://registry.npmjs.org/leven/-/leven-3.1.0.tgz"

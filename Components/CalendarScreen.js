@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {Button, ImageBackground, View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import { Calendar } from "react-native-calendars";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
+import isLeapYear from 'leap-year';
 
 
 
@@ -14,16 +15,17 @@ export default function CalendarScreen() {
         setStartDate(currentStartDate);
     }
 
-    const month30 = [2,4,6,9,11]
-    const month31 = [1,3,5,7.8,10,12]
+    const month30 = [4,6,9,11]
+    const month31 = [1,3,5,7,8,10,12]
 
     const getMarked = () => {
         let marked = {};
         let countDay = 0;
+        let monthCondition = startDate.getMonth() + 1;
         let dayCondition = startDate.getDate() + 4;
         for(let yy = startDate.getFullYear(); yy <= startDate.getFullYear(); yy++) {
             let year = yy.toString().padStart(2, '0');
-            for(let mm = startDate.getMonth() + 1; mm <= startDate.getMonth() + 1; mm++) {
+            for(let mm = startDate.getMonth() + 1; mm <= monthCondition; mm++) {
                 let month = mm.toString().padStart(2, '0');
                 for(let dd = startDate.getDate(); dd <= dayCondition; dd++) {
                     let day = dd.toString().padStart(2, '0');
@@ -32,18 +34,45 @@ export default function CalendarScreen() {
                     {
                         if (month30.includes(mm))
                         {
+                            if (mm == 12){
+                                mm = 1;
+                                yy++;
+                            }
+                            else {
+                                mm++;
+                            }
                             dd = 1;
-                            mm++;
+
                             dayCondition = 5 - countDay;
+                            monthCondition = 1;
                         }
                     }
                     if (dd == 32)
                     {
                         if (month31.includes(mm))
                         {
+                            if (mm == 12){
+                                mm = 1;
+                                yy++;
+                            }
+                            else {
+                                mm++;
+                            }
                             dd = 1;
-                            mm++;
+                           
                             dayCondition = 5 - countDay;
+                            monthCondition = 1;
+                        }
+                    }
+                    if (mm == 2)
+                    {
+                        if ((isLeapYear(yy + 2000) && dd == 30) || (!isLeapYear(yy + 2000) && dd == 29))
+                        {
+                            mm++;
+                            dd = 1;
+                           
+                            dayCondition = 5 - countDay;
+                            monthCondition = 1;
                         }
                     }
 
@@ -62,7 +91,6 @@ export default function CalendarScreen() {
                     marked[`${year}-${month}-${day}`] = {
                         periods
                     };
-                    console.log(`${year}-${month}-${day}`);
                     countDay++;
                 }
             }
