@@ -10,7 +10,7 @@ export default function OptionMaleScreen({navigation}) {
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
             <View style={{marginVertical: 20}}>
                 <TouchableOpacity
-                onPress={() => navigation.navigate("Calendar")}
+                onPress={() => navigation.navigate("ContactCalendar")}
                 style={styles.roundSquare1}>
                 <Text style={styles.textContact}>Choose contact start date</Text>
                 </TouchableOpacity>

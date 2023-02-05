@@ -10,9 +10,9 @@ export default function OptionMaleScreen({navigation}) {
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
             <View style={{marginVertical: 20}}>
                 <TouchableOpacity
-                onPress={() => navigation.navigate("Calendar")}
+                onPress={() => navigation.navigate("Contact Lenses Date")}
                 style={styles.roundSquare1}>
-                <Text style={styles.textContact}>Choose contact lenses start date</Text>
+                <Text style={styles.textContact}>Contact Lenses Start Date</Text>
                 </TouchableOpacity>
 
       </View>
@@ -35,11 +35,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
   roundSquare1: {
-    width: 410,
+    width: 390,
     height: 70,
     backgroundColor: "#cadeed",
     justifyContent: 'center',
-
     borderRadius: 20,
   },
 

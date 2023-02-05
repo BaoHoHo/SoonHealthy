@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Button, View, Text, TouchableOpacity, ImageBackground } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, ImageBackground } from "react-native";
 
 export default function OptionFemaleScreen({navigation}) {
   const image = require( '../background_image/dot.png');
@@ -9,17 +9,17 @@ export default function OptionFemaleScreen({navigation}) {
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}> 
           <View style={{marginVertical: 20}}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Calendar")}
+              onPress={() => navigation.navigate("Contact Lenses Date")}
               style={styles.roundSquare1}>
-              <Text style={styles.textContact}>Choose contact lenses start date</Text>
+              <Text style={styles.textContact}>Contact Lenses Start Date</Text>
             </TouchableOpacity>
           </View>
           
           <View style={{marginVertical: 20}}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Calendar")}
+              onPress={() => navigation.navigate("Period Date")}
               style={styles.roundSquare2}>
-              <Text style={styles.textPeriod}>Choose period start date</Text>
+              <Text style={styles.textPeriod}>Period Start Date</Text>
             </TouchableOpacity>
       </View>
     </View>
@@ -40,14 +40,14 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
   },
   roundSquare1: {
-    width: 410,
+    width: 390,
     height: 70,
     backgroundColor: "#ffd1dc",
     justifyContent: 'center',
     borderRadius: 20,
   },
   roundSquare2: {
-    width: 410,
+    width: 390,
     height: 70,
     backgroundColor: "#fda39f",
     justifyContent: 'center',

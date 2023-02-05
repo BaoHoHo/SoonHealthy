@@ -20,12 +20,12 @@ export default function CalendarScreen() {
             let year = yy.toString().padStart(2, '0');
             for(let mm = startDate.getMonth() + 1; mm <= startDate.getMonth() + 1; mm++) {
                 let month = mm.toString().padStart(2, '0');
-                for(let dd = startDate.getDate(); dd <= startDate.getDate() + 4; dd++) {
+                for(let dd = startDate.getDate(); dd <= startDate.getDate() + 29; dd++) {
                     let day = dd.toString().padStart(2, '0');
                     let periods = [
                         {
                         startingDay: dd == startDate.getDate(), 
-                        endingDay: dd  == startDate.getDate() + 4,
+                        endingDay: dd  == startDate.getDate() + 29,
                         color: '#ffd1dc',
                         }
                     ];
@@ -44,7 +44,7 @@ export default function CalendarScreen() {
         <ImageBackground source={image} resizeMode="cover" style={styles.image}>
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}> 
                 <View style={{marginVertical: 20}}>
-                    <View style={{marginTop: 50}}>
+                    <View style={{marginVertical: 50}}>
                         <View style={styles.grid}>
                             <Text style={styles.text}>Start day: </Text>
                             <RNDateTimePicker 
@@ -99,18 +99,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 5,
     borderRadius: 100,
-    backgroundColor: '#fda39f',
+    backgroundColor: '#ddead1',
   },
   screen: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 20,
+    marginVertical: 10,
   },
   text: {
     fontSize: 20,
     fontWeight: '400',
-    color: "#9e4244",
+    color: "#4b6043",
     fontFamily: 'Chalkduster',
     textAlign: 'center',
   }

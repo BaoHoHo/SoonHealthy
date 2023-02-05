@@ -13,13 +13,13 @@ export default function HomeScreen({ navigation }) {
         <Text style={style.text}>Welcome to SoonHealthy</Text>
         
         
-        <Text  style={{fontSize:20, alignItems: "center", fontFamily:'Chalkduster', marginVertical:30
+        <Text  style={{fontSize:20, alignItems: "center", fontFamily:'Chalkduster', marginVertical:100
       }}> 
-        What do you Identify as Biologically</Text>
+        What Was Your Sex At Birth?</Text>
   
         <View style={style.buttonFemale}>
         <TouchableOpacity 
-        onPress={() => navigation.navigate("OptionFemale")}
+        onPress={() => navigation.navigate("Female")}
         >
 
           <Text style={style.buttonTextFemale}>Female</Text>
@@ -28,7 +28,7 @@ export default function HomeScreen({ navigation }) {
   
         <View style={style.buttonMale}>
         <TouchableOpacity 
-        onPress={() => navigation.navigate("OptionMale")}
+        onPress={() => navigation.navigate("Male")}
         >
             <Text style={style.buttonTextMale}>Male</Text>
         </TouchableOpacity>
@@ -65,8 +65,7 @@ const style = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Chalkduster',
     fontStyle: 'bold',
-
-    marginVertical:20,
+    marginVertical: 50,
     borderColor: 'white',
    // backgroundColor: 'white',
     underlayColor: "white",
@@ -96,13 +95,14 @@ const style = StyleSheet.create({
     marginVertical:20,
   }, 
   buttonTextFemale: {
-    fontSize:20, 
+    fontSize:25, 
     justifyContent: "center", 
     color:'#A94064',
     fontFamily: 'Chalkduster',
+    
   },
   buttonTextMale: {
-    fontSize:20, 
+    fontSize:25, 
     justifyContent: "center", 
     color:'#cadeed',
     fontFamily: 'Chalkduster',

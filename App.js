@@ -7,6 +7,7 @@ import HomeScreen from "./Components/HomeScreen";
 import OptionFemaleScreen from "./Components/OptionFemaleScreen";
 import OptionMaleScreen from "./Components/OptionMaleScreen";
 import CalendarScreen from "./Components/CalendarScreen";
+import ContactCalendar from "./Components/ContactCalendar";
 
 import { Calendar } from "react-native-calendars";
 
@@ -20,9 +21,10 @@ export default function App() {
              
           <Stack.Screen name="Home" component={HomeScreen} />
           {/* <Stack.Screen name="About" component={AboutScreen} /> */}
-          <Stack.Screen name="OptionFemale" component={OptionFemaleScreen} />
-          <Stack.Screen name="OptionMale" component={OptionMaleScreen} />
-          <Stack.Screen name="Calendar" component={CalendarScreen} />
+          <Stack.Screen name="Female" component={OptionFemaleScreen} />
+          <Stack.Screen name="Male" component={OptionMaleScreen} />
+          <Stack.Screen name="Period Date" component={CalendarScreen} />
+          <Stack.Screen name="Contact Lenses Date" component={ContactCalendar} />
       </Stack.Navigator>
     </NavigationContainer>
     
