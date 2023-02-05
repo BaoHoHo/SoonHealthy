@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, ImageBackground, StyleSheet } from "react-native";
+import { View, Text, StyleSheet} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./Components/HomeScreen";
@@ -15,7 +15,7 @@ export default function App() {
 
     <NavigationContainer>
       <Stack.Navigator>
-      
+             
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="About" component={AboutScreen} />
           <Stack.Screen name="OptionFemale" component={OptionFemaleScreen} />
@@ -23,6 +23,7 @@ export default function App() {
           <Stack.Screen name="Calendar" component={CalendarScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+    
   );
 }
 
