@@ -5,14 +5,14 @@ import DefaultImage from '../assets/img/wallpaper.jpg';
 
 
 export default function HomeScreen({ navigation }) {
-  const image =require('../assets/img/wallpaper.jpg');
+  const image =require('../assets/img/header3.jpg');
   const image2 =require('../assets/img/wallpaperPink.jpg');
   return (
       <View style = {StyleSheet.container}>
-      <ImageBackground source={image2} resizeMode="cover" style={style.image}>
+      <ImageBackground source={image} resizeMode="cover" style={style.image}>
         <View style={{alignItems: "center"}}>
-
-      <Text style={style.text}>Welcome to SoonHealthy</Text>
+        <Text style={style.text}>Welcome to SoonHealthy</Text>
+        
         
         <Text  style={{fontSize:20, alignItems: "center", fontFamily:'Chalkduster', marginVertical:30
       }}> 
@@ -46,20 +46,31 @@ const style = StyleSheet.create({
   container: {
     flex: 1
   },
+  headerImage: {
+    borderRadius: 11/2,
+    paddingVertical: 20,
+
+  },
   image: {
     alignItem: "center",
-    flex: 0,
     width: 400, height: 800,
   },
   text: {
     color: '#6D9197',
     fontSize: 40,
-    lineHeight: 80,
+    lineHeight: 40,
     fontWeight: 'bold',
     textAlign: 'center',
     fontFamily: 'Chalkduster',
     fontStyle: 'bold',
+
     marginVertical:20,
+    borderColor: 'white',
+   // backgroundColor: 'white',
+    underlayColor: "white",
+    borderWidth: 2,
+    borderRadius: 200/3,
+    padding: 16,
   },
   buttonFemale: {
     fontSize: 17,
