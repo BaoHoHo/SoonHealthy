@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Button, ImageBackground, View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import {Alert, Modal, Pressable, ImageBackground, View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import { Calendar } from "react-native-calendars";
 import RNDateTimePicker from "@react-native-community/datetimepicker";
 import isLeapYear from 'leap-year';
@@ -8,6 +8,9 @@ import isLeapYear from 'leap-year';
 
 export default function CalendarScreen() {
     const image = require( '../background_image/dot.png');
+
+    const [modalVisible, setModalVisible] = useState(false);
+
     const [startDate, setStartDate] = useState(new Date());
 
     const onChangeStart = (event, selectedDate) => {
@@ -113,6 +116,27 @@ export default function CalendarScreen() {
                                 textColor="black"
                             />
                         </View>
+                        <View style={styles.centeredView}>
+                            <Modal
+                                animationType="slide"
+                                transparent={true}
+                                visible={modalVisible}
+                                onRequestClose={() => {
+                                Alert.alert('Modal has been closed.');
+                                setModalVisible(!modalVisible);
+                                }}>
+                                <View style={styles.centeredView}>
+                                <View style={styles.modalView}>
+                                    <Text style={styles.modalText}>WARNING!!! BABY!</Text>
+                                    <TouchableOpacity
+                                        style={[styles.roundButton]}
+                                        onPress={() => setModalVisible(!modalVisible)}>
+                                        <Text style={styles.textStyle}>Close</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                </View>
+                            </Modal>
+                        </View>
                         <View style={{marginVertical: 60}}>
                             <Calendar
                                 initialDate={startDate.toString()}  
@@ -123,7 +147,7 @@ export default function CalendarScreen() {
                     </View>
                     <View style={styles.screen}>
                         <TouchableOpacity
-                            onPress={() => navigation.navigate("Calendar")}
+                            onPress={() => setModalVisible(true)}
                             style={styles.roundButton}
                         >
                             <Text style={styles.text}>Confirm</Text>
@@ -171,5 +195,46 @@ const styles = StyleSheet.create({
     color: "#9e4244",
     fontFamily: 'Chalkduster',
     textAlign: 'center',
-  }
+  }, 
+  centeredView: {
+    flex: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+//   button: {
+//     borderRadius: 20,
+//     padding: 10,
+//     elevation: 2,
+//   },
+//   buttonOpen: {
+//     backgroundColor: '#F194FF',
+//   },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
 })
