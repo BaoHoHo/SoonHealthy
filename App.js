@@ -7,6 +7,8 @@ import AboutScreen from "./Components/AboutScreen";
 import OptionFemaleScreen from "./Components/OptionFemaleScreen";
 import CalendarScreen from "./Components/CalendarScreen";
 
+import { Calendar } from "react-native-calendars";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
