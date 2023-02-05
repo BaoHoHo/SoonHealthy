@@ -11,7 +11,7 @@ export default function OptionFemaleScreen({navigation}) {
             <TouchableOpacity
               onPress={() => navigation.navigate("Calendar")}
               style={styles.roundSquare1}>
-              <Text style={styles.textContact}>Choose contact start date</Text>
+              <Text style={styles.textContact}>Choose contact lenses start date</Text>
             </TouchableOpacity>
           </View>
           
@@ -40,28 +40,28 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
   },
   roundSquare1: {
-    width: 400,
+    width: 410,
     height: 70,
     backgroundColor: "#ffd1dc",
     justifyContent: 'center',
     borderRadius: 20,
   },
   roundSquare2: {
-    width: 400,
+    width: 410,
     height: 70,
     backgroundColor: "#fda39f",
     justifyContent: 'center',
     borderRadius: 20,
   },
   textContact: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '400',
     color: "#A94064",
     fontFamily: 'Chalkduster',
     textAlign: 'center',
   },
   textPeriod: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '400',
     color: "#9e4244",
     fontFamily: 'Chalkduster',

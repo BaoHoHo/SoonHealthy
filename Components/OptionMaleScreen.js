@@ -12,7 +12,7 @@ export default function OptionMaleScreen({navigation}) {
                 <TouchableOpacity
                 onPress={() => navigation.navigate("Calendar")}
                 style={styles.roundSquare1}>
-                <Text style={styles.textContact}>Choose contact start date</Text>
+                <Text style={styles.textContact}>Choose contact lenses start date</Text>
                 </TouchableOpacity>
 
       </View>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
   roundSquare1: {
-    width: 400,
+    width: 410,
     height: 70,
     backgroundColor: "#cadeed",
     justifyContent: 'center',
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 
   textContact: {
 
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '400',
     color: "#194569",
     fontFamily: 'Chalkduster',
