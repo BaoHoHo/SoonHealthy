@@ -1,38 +1,44 @@
 import React from "react";
 import { Button, View, Text, StyleSheet, ImageBackground, TouchableOpacity} from "react-native";
 //import style from '../Components/HomeScreen.css'
+import DefaultImage from '../assets/img/wallpaper.jpg';
 
-const image = {uri: 'https://www.dropbox.com/s/icy7b4yk37b8rz7/Portrait.jpg?dl=0'};
+
 export default function HomeScreen({ navigation }) {
-  
+  const image =require('../assets/img/wallpaper.jpg');
+  const image2 =require('../assets/img/wallpaperPink.jpg');
   return (
-    <View style={{ flex: 1, alignItems: "center"}}>
-      <View>
-        <ImageBackground source={image} style={style.image} >
-        <Text style={style.text}>Welcome to SoonHealthy</Text>
-      </ImageBackground>
+      <View style = {StyleSheet.container}>
+      <ImageBackground source={image2} resizeMode="cover" style={style.image}>
+        <View style={{alignItems: "center"}}>
+
+      <Text style={style.text}>Welcome to SoonHealthy</Text>
+        
+        <Text  style={{fontSize:20, alignItems: "center", fontFamily:'Chalkduster', marginVertical:30
+      }}> 
+        What do you Identify as Biologically</Text>
+  
+        <View style={style.buttonFemale}>
+        <TouchableOpacity 
+        onPress={() => navigation.navigate("FemaleOption")}
+        >
+            <Text style={style.buttonTextFemale}>Female</Text>
+        </TouchableOpacity>
         </View>
-      <Text  style={{fontSize:20, justifyContent: "center", fontFamily:'Chalkduster'
-}}> 
-      What do you Identify as Biologically</Text>
-
-      <View style={style.button}>
-      <TouchableOpacity 
-      onPress={() => navigation.navigate("FemaleOption")}
-      >
-          <Text style={style.buttonText}>Female</Text>
-      </TouchableOpacity>
+  
+        <View style={style.buttonMale}>
+        <TouchableOpacity 
+        onPress={() => navigation.navigate("MaleOption")}
+        >
+            <Text style={style.buttonTextMale}>Male</Text>
+        </TouchableOpacity>
+  
+        </View>
+        </View>
+      </ImageBackground>
       </View>
-
-      <View style={style.button}>
-      <TouchableOpacity 
-      onPress={() => navigation.navigate("MaleOption")}
-      >
-          <Text style={style.buttonText}>Male</Text>
-      </TouchableOpacity>
-
-      </View>
-    </View>
+      
+    
   );
 }
 
@@ -41,36 +47,53 @@ const style = StyleSheet.create({
     flex: 1
   },
   image: {
-    justifyContent: 'center',
+    alignItem: "center",
+    flex: 0,
+    width: 400, height: 800,
   },
   text: {
     color: '#6D9197',
-    fontSize: 20,
+    fontSize: 40,
     lineHeight: 80,
     fontWeight: 'bold',
     textAlign: 'center',
-    fontFamily: 'Zapfino',
+    fontFamily: 'Chalkduster',
     fontStyle: 'bold',
+    marginVertical:20,
   },
-  button: {
+  buttonFemale: {
     fontSize: 17,
-    padding: 12,
-    flex: 0,
     backgroundColor: "#ffd1dc",
-    elevation: 8,
-    borderRadius: 10,
+    elevation: 10,
+    borderRadius: 20,
     paddingVertical: 10,
     paddingHorizontal: 12,
-
-    marginBottom: 20,
-    padding: 30, 
-    
+    alignItem: 'center',
+    marginVertical:20,
   }, 
-  buttonText: {
+
+  buttonMale: {
+    fontSize: 17,
+    backgroundColor: "#194569",
+    elevation: 10,
+    borderRadius: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    alignItem: 'center',
+    marginVertical:20,
+  }, 
+  buttonTextFemale: {
     fontSize:20, 
     justifyContent: "center", 
     color:'#A94064',
     fontFamily: 'Chalkduster',
   },
+  buttonTextMale: {
+    fontSize:20, 
+    justifyContent: "center", 
+    color:'#cadeed',
+    fontFamily: 'Chalkduster',
+  },
+  
   
 });
