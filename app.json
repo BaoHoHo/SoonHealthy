@@ -7,6 +7,12 @@
       "ios",
       "android",
       "web"
-    ]
+    ],
+    "android": {
+      "package": "com.giabaoho123.blank"
+    },
+    "ios": {
+      "bundleIdentifier": "com.giabaoho123.blank"
+    }
   }
 }
